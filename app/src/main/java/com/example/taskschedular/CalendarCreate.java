@@ -2,10 +2,11 @@ package com.example.taskschedular;
 
 import android.app.Activity;
 import android.widget.TextView;
+
 import java.util.Calendar;
 
 
-public class CalendarCreate extends Activity{
+public class CalendarCreate extends Activity {
 
     //変数宣言
     public int showYear;   //対象の西暦年

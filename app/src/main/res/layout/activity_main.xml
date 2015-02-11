@@ -107,212 +107,158 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Day07"
-                android:id="@+id/txtDay07"
-                android:layout_column="0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day08"
-                android:id="@+id/txtDay08"
-                android:layout_column="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day09"
-                android:id="@+id/txtDay09"
-                android:layout_column="2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Day10"
                 android:id="@+id/txtDay10"
-                android:layout_column="3" />
+                android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day11"
                 android:id="@+id/txtDay11"
-                android:layout_column="4" />
+                android:layout_column="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day12"
                 android:id="@+id/txtDay12"
-                android:layout_column="5" />
+                android:layout_column="2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day13"
                 android:id="@+id/txtDay13"
-                android:layout_column="6" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                android:layout_column="3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day14"
                 android:id="@+id/txtDay14"
-                android:layout_column="0" />
+                android:layout_column="4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day15"
                 android:id="@+id/txtDay15"
-                android:layout_column="1" />
+                android:layout_column="5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day16"
                 android:id="@+id/txtDay16"
-                android:layout_column="2" />
+                android:layout_column="6" />
+        </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day17"
-                android:id="@+id/txtDay17"
-                android:layout_column="3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day18"
-                android:id="@+id/txtDay18"
-                android:layout_column="4" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day19"
-                android:id="@+id/txtDay19"
-                android:layout_column="5" />
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day20"
                 android:id="@+id/txtDay20"
-                android:layout_column="6" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day21"
                 android:id="@+id/txtDay21"
-                android:layout_column="0" />
+                android:layout_column="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day22"
                 android:id="@+id/txtDay22"
-                android:layout_column="1" />
+                android:layout_column="2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day23"
                 android:id="@+id/txtDay23"
-                android:layout_column="2" />
+                android:layout_column="3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day24"
                 android:id="@+id/txtDay24"
-                android:layout_column="3" />
+                android:layout_column="4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day25"
                 android:id="@+id/txtDay25"
-                android:layout_column="4" />
+                android:layout_column="5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day26"
                 android:id="@+id/txtDay26"
-                android:layout_column="5" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day27"
-                android:id="@+id/txtDay27"
                 android:layout_column="6" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day28"
-                android:id="@+id/txtDay28"
-                android:layout_column="0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day29"
-                android:id="@+id/txtDay29"
-                android:layout_column="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day30"
                 android:id="@+id/txtDay30"
-                android:layout_column="2" />
+                android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day31"
                 android:id="@+id/txtDay31"
-                android:layout_column="3" />
+                android:layout_column="1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day32"
                 android:id="@+id/txtDay32"
-                android:layout_column="4" />
+                android:layout_column="2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day33"
                 android:id="@+id/txtDay33"
-                android:layout_column="5" />
+                android:layout_column="3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day34"
                 android:id="@+id/txtDay34"
+                android:layout_column="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day35"
+                android:id="@+id/txtDay35"
+                android:layout_column="5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day36"
+                android:id="@+id/txtDay36"
                 android:layout_column="6" />
         </TableRow>
 
@@ -323,50 +269,104 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Day35"
-                android:id="@+id/txtDay35"
-                android:layout_column="0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day36"
-                android:id="@+id/txtDay36"
-                android:layout_column="1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day37"
-                android:id="@+id/txtDay37"
-                android:layout_column="2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day38"
-                android:id="@+id/txtDay38"
-                android:layout_column="3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day39"
-                android:id="@+id/txtDay39"
-                android:layout_column="4" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Day40"
                 android:id="@+id/txtDay40"
-                android:layout_column="5" />
+                android:layout_column="0" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day41"
                 android:id="@+id/txtDay41"
+                android:layout_column="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day42"
+                android:id="@+id/txtDay42"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day43"
+                android:id="@+id/txtDay43"
+                android:layout_column="3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day44"
+                android:id="@+id/txtDay44"
+                android:layout_column="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day45"
+                android:id="@+id/txtDay45"
+                android:layout_column="5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day46"
+                android:id="@+id/txtDay46"
+                android:layout_column="6" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day50"
+                android:id="@+id/txtDay50"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day51"
+                android:id="@+id/txtDay51"
+                android:layout_column="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day52"
+                android:id="@+id/txtDay52"
+                android:layout_column="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day53"
+                android:id="@+id/txtDay53"
+                android:layout_column="3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day54"
+                android:id="@+id/txtDay54"
+                android:layout_column="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day55"
+                android:id="@+id/txtDay55"
+                android:layout_column="5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day56"
+                android:id="@+id/txtDay56"
                 android:layout_column="6" />
         </TableRow>
 
