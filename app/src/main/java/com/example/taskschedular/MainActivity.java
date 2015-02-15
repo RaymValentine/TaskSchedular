@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,35 @@ public class MainActivity extends ActionBarActivity {
         showYear        = cal.get(Calendar.YEAR);//現在の年を取得
         showMonth       = cal.get(Calendar.MONTH) + 1;//現在の月を取得
         createCalendar();
+
+        ((Button)findViewById(R.id.btnNextMonth)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (showMonth == 12)
+                {
+                    showYear  = showYear + 1;
+                    showMonth = 1;
+                }
+                else
+                {
+                    showMonth = showMonth + 1;
+                }
+                createCalendar();
+            }
+        });
+        ((Button)findViewById(R.id.btnPreviousMonth)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (showMonth == 1) {
+                    showYear = showYear - 1;
+                    showMonth = 12;
+                } else {
+                    showMonth = showMonth - 1;
+                }
+                createCalendar();
+            }
+        });
+
     }
 
     @Override
@@ -56,6 +87,7 @@ public class MainActivity extends ActionBarActivity {
     public int nowYear;
     public int nowMonth;
     public int nowDay;
+    public boolean today = true;
     public int[][] monthflg = new int[6][7];        //0:前月　1:今月　2:次月
     private int dayCount;   //
     private int startDay;   //先頭曜日
@@ -138,6 +170,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }
         //TextViewに日付をセット
+        today = false;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 name = "txtDay" + String.valueOf(i) + String.valueOf(j);
@@ -165,6 +198,14 @@ public class MainActivity extends ActionBarActivity {
                 {
                     textView1.requestFocus();
                     textView1.setBackgroundResource(R.drawable.background_today);
+                }
+                //今月ではない場合１日の色を変更
+                if (i == 0)
+                {
+                    if (!today && calendarMatrix[i][j] == 1)
+                    {
+                        textView1.requestFocus();
+                    }
                 }
             }
         }
