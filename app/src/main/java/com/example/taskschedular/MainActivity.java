@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 import java.util.Calendar;
 
 
@@ -17,8 +18,11 @@ public class MainActivity extends ActionBarActivity {
 
         //初期設定
         Calendar cal = Calendar.getInstance();
-        showYear = cal.get(Calendar.YEAR);//現在の年を取得
-        showMonth = cal.get(Calendar.MONTH) + 1;//現在の月を取得
+        nowYear         = cal.get(Calendar.YEAR);//現在の年を取得
+        nowMonth        = cal.get(Calendar.MONTH) + 1;//現在の月を取得
+        nowDay          = cal.get(Calendar.DATE);//現在の日を取得
+        showYear        = cal.get(Calendar.YEAR);//現在の年を取得
+        showMonth       = cal.get(Calendar.MONTH) + 1;//現在の月を取得
         createCalendar();
     }
 
@@ -49,6 +53,10 @@ public class MainActivity extends ActionBarActivity {
     //変数宣言
     public int showYear;   //対象の西暦年
     public int showMonth;  //対象の月
+    public int nowYear;
+    public int nowMonth;
+    public int nowDay;
+    public int[][] monthflg = new int[6][7];        //0:前月　1:今月　2:次月
     private int dayCount;   //
     private int startDay;   //先頭曜日
     private int lastDate1;  //月末日付1
@@ -102,10 +110,19 @@ public class MainActivity extends ActionBarActivity {
                 if (isStart) {
                     //終了日まで行ったか
                     calendarMatrix[i][j] = dayCount;
+                    if (!isEnd)
+                    {
+                        monthflg[i][j] = 1;
+                    }
+                    else
+                    {
+                        monthflg[i][j] = 2;
+                    }
                     //カウント＋１
                     dayCount++;
                     //終了確認
-                    if (dayCount > lastDate1) {
+                    if(dayCount > lastDate1)
+                    {
                         isEnd = true;
                         //来月初をセット
                         dayCount = 1;
@@ -132,6 +149,22 @@ public class MainActivity extends ActionBarActivity {
                     textView1.setText(String.valueOf(String.format("%1$2d", calendarMatrix[i][j])) + "\n" + "\n");
                 } else {
                     textView1.setText(String.valueOf(calendarMatrix[i][j]) + "\n" + "\n");
+                }
+
+                //背景セット//0:前月　1:今月　2:次月
+                if (monthflg[i][j] == 1)
+                {
+                    textView1.setBackgroundResource(R.drawable.background_nowmonth);
+                }
+                else
+                {
+                    textView1.setBackgroundResource(R.drawable.background_prenex);
+                }
+                // 今日の背景をセット
+                if (calendarMatrix[i][j] == nowDay && showYear == nowYear && showMonth == nowMonth)
+                {
+                    textView1.requestFocus();
+                    textView1.setBackgroundResource(R.drawable.background_today);
                 }
             }
         }
