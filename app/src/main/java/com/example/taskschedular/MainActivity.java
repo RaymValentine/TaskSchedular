@@ -82,28 +82,28 @@ public class MainActivity extends ActionBarActivity  {
 
 
     //変数宣言
-    public int showYear;   //対象の西暦年
-    public int showMonth;  //対象の月
+    public int showYear;         //対象の西暦年
+    public int showMonth;       //対象の月
     public int nowYear;
     public int nowMonth;
     public int nowDay;
-    public boolean today = true;
-    public int[][] monthflg = new int[6][7];        //0:前月　1:今月　2:次月
-    private int dayCount;   //
-    private int startDay;   //先頭曜日
-    private int lastDate1;  //月末日付1
-    private int lastDate2;  //月末日付2
+    private int dayCount;       //
+    private int startDay;       //先頭曜日
+    private int lastDate1;      //月末日付1
+    private int lastDate2;      //月末日付2
     private boolean isStart;    //
     private boolean isEnd;      //
-    private int x;          //
-    private int y;          //
-    private String name;    //
-    private int resId;   //
-    private int len;        //
+    private int x;              //
+    private int y;              //
+    private String name;        //
+    private int resId;          //
+    private int len;            //
     private int[][] calendarMatrix = new int[6][7];   //カレンダー情報テーブル
 
     //カレンダー作成
     private void createCalendar() {
+        int[][] monthflg = new int[6][7];        //0:前月　1:今月　2:次月
+
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         // 年月表示
@@ -170,7 +170,6 @@ public class MainActivity extends ActionBarActivity  {
             }
         }
         //TextViewに日付をセット
-        today = false;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 name = "txtDay" + String.valueOf(i) + String.valueOf(j);
@@ -198,14 +197,6 @@ public class MainActivity extends ActionBarActivity  {
                 {
                     textView1.requestFocus();
                     textView1.setBackgroundResource(R.drawable.background_today);
-                }
-                //今月ではない場合１日の色を変更
-                if (i == 0)
-                {
-                    if (!today && calendarMatrix[i][j] == 1)
-                    {
-                        textView1.requestFocus();
-                    }
                 }
             }
         }
