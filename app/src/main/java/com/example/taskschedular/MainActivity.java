@@ -1,7 +1,9 @@
 package com.example.taskschedular;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -201,12 +203,18 @@ public class MainActivity extends ActionBarActivity  {
                 resId = getResources().getIdentifier(name, "id", getPackageName());
                 TextView textView1 = (TextView) findViewById(resId);
 
-                len = Integer.toString(calendarMatrix[i][j]).length();
-                if (len == 1) {
-                    textView1.setText(String.valueOf(String.format("%1$2d", calendarMatrix[i][j])) + "\n" + "\n");
-                } else {
-                    textView1.setText(String.valueOf(calendarMatrix[i][j]) + "\n" + "\n");
+                // 日付を設定
+                textView1.setText(String.valueOf(String.format("%d ", calendarMatrix[i][j])) + "\n" + "\n");
+
+                // 日曜・土曜は専用のテキストカラーを設定
+                if (j == 0) {
+                    textView1.setTextColor(Color.RED);
+                } else if (j == 6) {
+                    textView1.setTextColor(Color.BLUE);
                 }
+
+                // テキストの表示位置を設定（右寄せ）
+                textView1.setGravity(Gravity.RIGHT);
 
                 // 背景セット// 0:前月　1:今月　2:次月
                 if (monthFlg[i][j] == 1)
