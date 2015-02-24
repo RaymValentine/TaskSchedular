@@ -20,22 +20,8 @@ public class MainActivity extends ActionBarActivity  {
     private int nowYear;
     private int nowMonth;
     private int nowDay;
-    private int dayCount;       //
-    private int startDay;       //先頭曜日
-    private int lastDate1;      //月末日付1
-    private int lastDate2;      //月末日付2
-    private boolean isStart;    //
-    private boolean isEnd;      //
-    private int x;              //
-    private int y;              //
-    private String name;        //
-    private int resId;          //
-    private int len;            //
     private int[][] calendarMatrix = new int[6][7]; // カレンダー情報テーブル
     private int[][] monthFlg = new int[6][7];       // 0:前月　1:今月　2:次月
-
-    private Integer intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
-    private Integer intTxtSizeSelectlView = 18;     // テキストサイズセット（選択サイズ）
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +72,11 @@ public class MainActivity extends ActionBarActivity  {
             , R.id.txtDay50, R.id.txtDay51, R.id.txtDay52, R.id.txtDay53, R.id.txtDay54, R.id.txtDay55, R.id.txtDay56
     })
     void clickTxtDay(TextView textView) {
+        Integer intTxtSizeSelectlView = 18;             // テキストサイズセット（選択サイズ）
 
-        RefreshMonthView(); // 月表示を初期化
+        RefreshMonthView();                             // 月表示を初期化
 
-        textView.setTextSize(intTxtSizeSelectlView);   // テキストサイズセット（選択サイズ）
+        textView.setTextSize(intTxtSizeSelectlView);    // テキストサイズセット（選択サイズ）
         textView.requestFocus();
         textView.setBackgroundResource(R.drawable.background_selectday);
     }
@@ -119,6 +106,16 @@ public class MainActivity extends ActionBarActivity  {
 
     // カレンダー作成
     private void createCalendar() {
+
+        int dayCount;       //
+        int startDay;       //先頭曜日
+        int lastDate1;      //月末日付1
+        int lastDate2;      //月末日付2
+        boolean isStart;    //
+        boolean isEnd;      //
+        int x;              //
+        int y;              //
+
         monthFlg = new int[6][7];                       // ここでは初期化を行う
 
         Calendar calendar = Calendar.getInstance();
@@ -193,6 +190,11 @@ public class MainActivity extends ActionBarActivity  {
 
     // 月表示を初期化
     private void RefreshMonthView() {
+        String name;        //
+        int resId;          //
+        int len;            //
+        Integer intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
+
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 name = "txtDay" + String.valueOf(i) + String.valueOf(j);
