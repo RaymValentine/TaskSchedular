@@ -47,6 +47,64 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_sun"
+                android:id="@+id/txtSun"
+                android:textColor="@color/sun"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_mon"
+                android:id="@+id/txtMon"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_tue"
+                android:id="@+id/txtTue"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_wed"
+                android:id="@+id/txtWed"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_thu"
+                android:id="@+id/txtThu"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_fri"
+                android:id="@+id/txtFri"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_sat"
+                android:id="@+id/txtSat"
+                android:textColor="@color/sat"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_weight="1" />
         </TableRow>
 
         <TableRow

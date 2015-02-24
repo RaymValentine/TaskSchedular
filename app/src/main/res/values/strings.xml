@@ -9,4 +9,12 @@
     <string name="next_month">&gt;&gt;</string>
     <string name="year_month">xxxx年xx月</string>
 
+    <string name="title_sun">SUN</string>
+    <string name="title_mon">MON</string>
+    <string name="title_tue">TUE</string>
+    <string name="title_wed">WED</string>
+    <string name="title_thu">THU</string>
+    <string name="title_fri">FRI</string>
+    <string name="title_sat">SAT</string>
+
 </resources>
