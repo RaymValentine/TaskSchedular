@@ -66,27 +66,8 @@ public class MainActivity extends ActionBarActivity  {
             , R.id.txtDay50, R.id.txtDay51, R.id.txtDay52, R.id.txtDay53, R.id.txtDay54, R.id.txtDay55, R.id.txtDay56
     })
     void clickTxtDay(TextView textView) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                name = "txtDay" + String.valueOf(i) + String.valueOf(j);
-                resId = getResources().getIdentifier(name, "id", getPackageName());
-                TextView textView1 = (TextView) findViewById(resId);
 
-                textView1.setTextSize(intTxtSizeNormalView);   // テキストサイズセット（通常サイズ）
-
-                //背景セット//0:前月　1:今月　2:次月
-                if (monthflg[i][j] == 1) {
-                    textView1.setBackgroundResource(R.drawable.background_nowmonth);
-                } else {
-                    textView1.setBackgroundResource(R.drawable.background_prenex);
-                }
-                // 今日の背景をセット
-                if (calendarMatrix[i][j] == nowDay && showYear == nowYear && showMonth == nowMonth) {
-                    textView1.requestFocus();
-                    textView1.setBackgroundResource(R.drawable.background_today);
-                }
-            }
-        }
+        RefreshMonthView(); // 月表示を初期化
 
         textView.setTextSize(intTxtSizeSelectlView);   // テキストサイズセット（選択サイズ）
         textView.requestFocus();
@@ -198,6 +179,7 @@ public class MainActivity extends ActionBarActivity  {
                 }
             }
         }
+
         //前月末を改めて挿入
         for (int i = 0; i <= y; i++) {
             for (int j = 0; j < x; j++) {
@@ -205,7 +187,12 @@ public class MainActivity extends ActionBarActivity  {
                 lastDate2++;
             }
         }
-        //TextViewに日付をセット
+
+        RefreshMonthView(); // 月表示を初期化
+    }
+
+    // 月表示を初期化
+    private void RefreshMonthView() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 name = "txtDay" + String.valueOf(i) + String.valueOf(j);
@@ -228,13 +215,13 @@ public class MainActivity extends ActionBarActivity  {
                 {
                     textView1.setBackgroundResource(R.drawable.background_prenex);
                 }
+
                 // 今日の背景をセット
                 if (calendarMatrix[i][j] == nowDay && showYear == nowYear && showMonth == nowMonth)
                 {
                     textView1.requestFocus();
                     textView1.setBackgroundResource(R.drawable.background_today);
                 }
-
                 textView1.setTextSize(intTxtSizeNormalView);   // テキストサイズセット（通常サイズ）
             }
         }
