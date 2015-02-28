@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity  {
             , R.id.txtDay50, R.id.txtDay51, R.id.txtDay52, R.id.txtDay53, R.id.txtDay54, R.id.txtDay55, R.id.txtDay56
     })
     void clickTxtDay(TextView textView) {
-        Integer intTxtSizeSelectlView = 18;             // テキストサイズセット（選択サイズ）
+        int intTxtSizeSelectlView = 18;             // テキストサイズセット（選択サイズ）
 
         RefreshMonthView();                             // 月表示を初期化
 
@@ -194,8 +194,7 @@ public class MainActivity extends ActionBarActivity  {
     private void RefreshMonthView() {
         String name;        //
         int resId;          //
-        int len;            //
-        Integer intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
+        int intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
