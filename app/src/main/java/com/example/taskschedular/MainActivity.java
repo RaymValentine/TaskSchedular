@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity  {
     }
 
     @OnClick(R.id.btnPreviousMonth)
-    void btnPreviousMonth() {
+    void clickPreviousMonth() {
         if (showMonth == 1) {
             showYear = showYear - 1;
             showMonth = 12;
