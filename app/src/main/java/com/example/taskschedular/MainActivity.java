@@ -39,6 +39,7 @@ public class MainActivity extends ActionBarActivity  {
         showYear        = cal.get(Calendar.YEAR);       //現在の年を取得
         showMonth       = cal.get(Calendar.MONTH) + 1;  //現在の月を取得
         createCalendar();
+
     }
 
     @OnClick(R.id.btnNextMonth)
