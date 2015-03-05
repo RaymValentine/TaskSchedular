@@ -1,155 +1,100 @@
 package com.example.taskschedular;
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import java.util.Calendar;
-
-import butterknife.ButterKnife;
+import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity  {
-
-    //変数宣言
-    private int showYear;       //対象の西暦年
-    private int showMonth;      //対象の月
-    private int nowYear;
-    private int nowMonth;
-    private int nowDay;
-    private int[][] calendarMatrix = new int[6][7]; // カレンダー情報テーブル
-    private int[][] monthFlg = new int[6][7];       // 0:前月　1:今月　2:次月
+public class MainActivity extends FragmentActivity implements ViewPager.OnPageChangeListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
 
+        //初期データ
+        ArrayList<Integer> items = new ArrayList<Integer>();
+        items.add(0);
+        items.add(1);
+        items.add(2);
 
-        ViewPager mViewPager = (ViewPager)findViewById(R.id.viewpager);
-//        PagerAdapter mPagerAdapter = new MyPagerAdapter();
-//        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager.setAdapter(new MyPagerAdapter(this));
-        mViewPager.setCurrentItem(1, false);    // 初期ページを設定
+        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
+        adapter.addAll(items);
 
-
-//        //初期設定
-//        Calendar cal = Calendar.getInstance();
-//        nowYear         = cal.get(Calendar.YEAR);       //現在の年を取得
-//        nowMonth        = cal.get(Calendar.MONTH) + 1;  //現在の月を取得
-//        nowDay          = cal.get(Calendar.DATE);       //現在の日を取得
-//        showYear        = cal.get(Calendar.YEAR);       //現在の年を取得
-//        showMonth       = cal.get(Calendar.MONTH) + 1;  //現在の月を取得
-//        createCalendar();
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(1);
+        viewPager.setOnPageChangeListener(this);
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-    private class MyPagerAdapter extends PagerAdapter {
-        private LayoutInflater mInflter;    // レイアウトを作る
-        private Activity mParentActivity;   // アクティビティ
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        /**
-         * コンストラクタ
-         *
-         * @param activity
-         */
-        public MyPagerAdapter(final Activity activity) {
-            mInflter = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            mParentActivity = activity;
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
 
-        /**
-         * ページを作るときに呼ばれるらしい
-         *
-         * @param container
-         * @param position
-         * @return
-         */
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            int[] pages = {R.layout.calendar_view0, R.layout.calendar_view1, R.layout.calendar_view2};
+        return super.onOptionsItemSelected(item);
+    }
 
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    @Override
+    public void onPageSelected(int position) {
+    }
 
-            View layout;
-            layout = inflater.inflate(pages[position], null);
-            ((ViewPager) container).addView(layout);
+    @Override
+    public void onPageScrolled(int position, float positionOffset,
+                               int positionOffsetPixels) {
+    }
 
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if (state == ViewPager.SCROLL_STATE_IDLE) {
+            ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
+            MyPagerAdapter adapter = (MyPagerAdapter) viewPager.getAdapter();
 
-            // カレンダー表示初期設定
-            Calendar cal = Calendar.getInstance();
-            nowYear = cal.get(Calendar.YEAR);       //現在の年を取得
-            nowMonth = cal.get(Calendar.MONTH) + 1;  //現在の月を取得
-            nowDay = cal.get(Calendar.DATE);       //現在の日を取得
-            showYear = cal.get(Calendar.YEAR);       //現在の年を取得
-            showMonth = cal.get(Calendar.MONTH) + 1;  //現在の月を取得
+            ArrayList<Integer> indexes = adapter.getAll();
 
-            int intArgYear;     // 表示する年指定
-            int intArgMonth;    // 表示する月指定
-            switch (position) {
-                case 0: // とりあえず前月表示
-                    if (nowMonth == 1) {
-                        intArgYear = nowYear - 1;
-                        intArgMonth = 12;
-                    } else {
-                        intArgYear = nowYear;
-                        intArgMonth = nowMonth - 1;
-                    }
-                    createCalendar(layout, intArgYear, intArgMonth);
-                    break;
-
-                case 1: // とりあえず今月表示
-                    intArgYear = nowYear;
-                    intArgMonth = nowMonth;
-                    createCalendar(layout, intArgYear, intArgMonth);
-                    break;
-
-                case 2: // とりあえず次月表示
-                    if (showMonth == 12) {
-                        intArgYear = nowYear + 1;
-                        intArgMonth = 1;
-                    } else {
-                        intArgYear = nowYear;
-                        intArgMonth = nowMonth + 1;
-                    }
-                    createCalendar(layout, intArgYear, intArgMonth);
-                    break;
+            int currentPage = viewPager.getCurrentItem();
+            if( currentPage != 0 && currentPage != indexes.size() - 1){
+                //最初でも最後のページでもない場合処理を抜ける
+                return;
             }
 
-            return layout;
+            int nextPage = 0;
+            if(currentPage == 0){
+                //最初のページに到達
+                nextPage = 1;
+                indexes.add(0, indexes.get(0) - 1);
+                //1ページ目は既に存在するため、Fragmentを全て破棄する
+                adapter.destroyAllItem(viewPager);
+                adapter.notifyDataSetChanged();
+            }else if(currentPage == indexes.size() - 1){
+                //最後のページに到達
+                nextPage = currentPage;
+                indexes.add(indexes.get(indexes.size() - 1) + 1);
+            }
+            adapter.addAll(indexes);
+            viewPager.setAdapter(adapter);
+            viewPager.setCurrentItem(nextPage);
         }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewPager) container).removeView((View) object);
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object object) {
-            return view.equals(object);
-        }
-
     }
-
-
 
 
 
@@ -195,157 +140,5 @@ public class MainActivity extends ActionBarActivity  {
 //        textView.setBackgroundResource(R.drawable.background_selectday);
 //    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * カレンダー作成
-     * @param view
-     */
-    private void createCalendar(View view, int year, int month) {
-
-        int dayCount;       //
-        int startDay;       //先頭曜日
-        int lastDate1;      //月末日付1
-        int lastDate2;      //月末日付2
-        boolean isStart;    //
-        boolean isEnd;      //
-        int x;              //
-        int y;              //
-
-        monthFlg = new int[6][7];                       // ここでは初期化を行う
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.clear();
-        // 年月表示
-        TextView textView = (TextView)view.findViewById(R.id.txtYM);
-        textView.setText(year + "年" + month + "月");
-        // 月の初めの曜日を求めます。
-        calendar.set(year, month - 1, 1);       // 引数: 1月: 0, 2月: 1, ...
-        startDay = calendar.get(Calendar.DAY_OF_WEEK);  // 曜日を取得
-        // 今月末の日付を求めます。
-        calendar.add(Calendar.MONTH, 1);
-        calendar.add(Calendar.DATE, -1);
-        lastDate1 = calendar.get(Calendar.DATE);        // 日を取得
-        dayCount = 1;
-        // 前月末の日付を求めます。
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        calendar.add(Calendar.DATE, -1);
-        lastDate2 = calendar.get(Calendar.DATE);        // 日を取得
-        // 初期値セット
-        isStart = false;
-        isEnd = false;
-        // 前月末の日付用
-        x = 0;
-        y = 0;
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                // 先頭曜日確認
-                // startDay: 日曜日 = 1, 月曜日 = 2, ...
-                if (!isStart && (startDay - 1) == j) {
-                    // 日にちセット開始
-                    isStart = true;
-                    // 今月のカレンダーに前月末表示用
-                    y = i;
-                    x = j;
-                    lastDate2 = lastDate2 - (startDay - 2);
-                }
-                if (isStart) {
-                    // 終了日まで行ったか
-                    calendarMatrix[i][j] = dayCount;
-                    if (!isEnd) {
-                        monthFlg[i][j] = 1;
-                    } else {
-                        monthFlg[i][j] = 2;
-                    }
-                    // カウント＋１
-                    dayCount++;
-                    // 終了確認
-                    if (dayCount > lastDate1) {
-                        isEnd = true;
-                        // 来月初をセット
-                        dayCount = 1;
-                    }
-                }
-            }
-        }
-
-        // 前月末を改めて挿入
-        for (int i = 0; i <= y; i++) {
-            for (int j = 0; j < x; j++) {
-                calendarMatrix[i][j] = lastDate2;
-                lastDate2++;
-            }
-        }
-
-        RefreshMonthView(view, year, month); // 月表示を初期化
-    }
-
-    /**
-     * つき表示を初期化
-     * @param view
-     */
-    private void RefreshMonthView(View view, int year, int month) {
-        String name;        //
-        int resId;          //
-        int intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
-
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                name = "txtDay" + String.valueOf(i) + String.valueOf(j);
-                resId = getResources().getIdentifier(name, "id", getPackageName());
-                TextView textView1 = (TextView)view.findViewById(resId);
-
-                // 日付を設定
-                textView1.setText(String.valueOf(String.format("%d ", calendarMatrix[i][j])) + "\n" + "\n");
-
-                // 日曜・土曜は専用のテキストカラーを設定
-                if (j == 0) {
-                    textView1.setTextColor(Color.RED);
-                } else if (j == 6) {
-                    textView1.setTextColor(Color.BLUE);
-                }
-
-                // テキストの表示位置を設定（右寄せ）
-                textView1.setGravity(Gravity.RIGHT);
-
-                // 背景セット// 0:前月　1:今月　2:次月
-                if (monthFlg[i][j] == 1) {
-                    textView1.setBackgroundResource(R.drawable.background_nowmonth);
-                } else {
-                    textView1.setBackgroundResource(R.drawable.background_prenex);
-                }
-
-                // 今日の背景をセット
-                if ((calendarMatrix[i][j] == nowDay)
-                        && (monthFlg[i][j] == 1)
-                        && (year == nowYear)
-                        && (month == nowMonth)) {
-                    textView1.requestFocus();
-                    textView1.setBackgroundResource(R.drawable.background_today);
-                }
-                textView1.setTextSize(intTxtSizeNormalView);   // テキストサイズセット（通常サイズ）
-            }
-        }
-    }
 
 }
