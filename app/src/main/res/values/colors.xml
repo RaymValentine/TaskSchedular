@@ -3,5 +3,6 @@
 
     <color name="sun">#FF0000</color>
     <color name="sat">#0000FF</color>
+    <color name="weekIndex">#DDDDFF</color>
 
 </resources>

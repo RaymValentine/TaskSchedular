@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -144,7 +145,7 @@ public class MyFragment extends Fragment {
     private void RefreshMonthView(View view, int year, int month) {
         String name;        //
         int resId;          //
-        int intTxtSizeNormalView = 12;      // テキストサイズセット（通常サイズ）
+        float fTxtSizeNormalView = 20.00F;      // テキストサイズセット（通常サイズ）
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -161,6 +162,9 @@ public class MyFragment extends Fragment {
                 } else if (j == 6) {
                     textView1.setTextColor(Color.BLUE);
                 }
+
+                // テキストサイズを設定（dp）
+                textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fTxtSizeNormalView);
 
                 // テキストの表示位置を設定（右寄せ）
                 textView1.setGravity(Gravity.RIGHT);
@@ -180,7 +184,6 @@ public class MyFragment extends Fragment {
                     textView1.requestFocus();
                     textView1.setBackgroundResource(R.drawable.background_today);
                 }
-                textView1.setTextSize(intTxtSizeNormalView);   // テキストサイズセット（通常サイズ）
             }
         }
     }
