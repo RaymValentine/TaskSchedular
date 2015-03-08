@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * Created by owner on 2015/03/04.
  */
@@ -27,16 +30,22 @@ public class MyFragment extends Fragment {
     private int[][] monthFlg = new int[6][7];               // 0:前月　1:今月　2:次月
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.calendar_view, container, false);
-
         Bundle bundle = getArguments();
-
         int index = bundle.getInt("INDEX");
         int intArgYear;         // 表示する年指定（とりあえず今年を初期設定）
         int intArgMonth;        // 表示する月指定（とりあえず今月を初期設定）
+
+        ButterKnife.inject(this, view);
 
         if (index == 1) {       // 今日を表示
             intArgYear = nowYear;
@@ -55,9 +64,30 @@ public class MyFragment extends Fragment {
         return view;
     }
 
+    @OnClick({ R.id.txtDay00, R.id.txtDay01, R.id.txtDay02, R.id.txtDay03, R.id.txtDay04, R.id.txtDay05, R.id.txtDay06
+            , R.id.txtDay10, R.id.txtDay11, R.id.txtDay12, R.id.txtDay13, R.id.txtDay14, R.id.txtDay15, R.id.txtDay16
+            , R.id.txtDay20, R.id.txtDay21, R.id.txtDay22, R.id.txtDay23, R.id.txtDay24, R.id.txtDay25, R.id.txtDay26
+            , R.id.txtDay30, R.id.txtDay31, R.id.txtDay32, R.id.txtDay33, R.id.txtDay34, R.id.txtDay35, R.id.txtDay36
+            , R.id.txtDay40, R.id.txtDay41, R.id.txtDay42, R.id.txtDay43, R.id.txtDay44, R.id.txtDay45, R.id.txtDay46
+            , R.id.txtDay50, R.id.txtDay51, R.id.txtDay52, R.id.txtDay53, R.id.txtDay54, R.id.txtDay55, R.id.txtDay56
+    })
+    void clickTxtDay(TextView textView) {
+//        textView.setBackgroundResource(R.drawable.background_selectday);
+    }
+//    void clickTxtDay(TextView textView) {
+//        Float fTxtSizeSelectView = 25.00F;             // テキストサイズセット（選択サイズ）
+//        TextView txtInfo = (TextView)getActivity().findViewById(R.id.txtInfo);
+//        txtInfo.setText(textView.getText().toString() + "日を選択");
+//        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fTxtSizeSelectView);    // テキストサイズセット（dp）
+//        textView.setBackgroundResource(R.drawable.background_selectday);
+//    }
+
+
     /**
-     * カレンダー作成
+     *  カレンダー作成
      * @param view
+     * @param year
+     * @param month
      */
     private void createCalendar(View view, int year, int month) {
 
