@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
@@ -28,6 +30,9 @@ public class MyFragment extends Fragment {
     private int nowDay = cal.get(Calendar.DATE);            //現在の日を取得
     private int[][] calendarMatrix = new int[6][7];         // カレンダー情報テーブル
     private int[][] monthFlg = new int[6][7];               // 0:前月　1:今月　2:次月
+
+    @InjectView(R.id.txtInfo)
+    TextView mTextView;
 
     @Override
     public void onDestroyView() {
@@ -72,7 +77,10 @@ public class MyFragment extends Fragment {
             , R.id.txtDay50, R.id.txtDay51, R.id.txtDay52, R.id.txtDay53, R.id.txtDay54, R.id.txtDay55, R.id.txtDay56
     })
     void clickTxtDay(TextView textView) {
-//        textView.setBackgroundResource(R.drawable.background_selectday);
+        String strSetText = textView.getText().toString().trim();
+
+        mTextView.setText(String.valueOf(String.format("%S日をタップしました。", strSetText)));
+        Toast.makeText(getActivity(), "タップ", Toast.LENGTH_SHORT).show();    // トースト表示
     }
 //    void clickTxtDay(TextView textView) {
 //        Float fTxtSizeSelectView = 25.00F;             // テキストサイズセット（選択サイズ）
