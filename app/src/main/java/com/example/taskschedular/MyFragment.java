@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -80,7 +79,7 @@ public class MyFragment extends Fragment {
         String strSetText = textView.getText().toString().trim();
 
         mTextView.setText(String.valueOf(String.format("%S日をタップしました。", strSetText)));
-        Toast.makeText(getActivity(), "タップ", Toast.LENGTH_SHORT).show();    // トースト表示
+        CustomToast.makeText(getActivity(), "タップ", 500).show();             // トースト表示
     }
 //    void clickTxtDay(TextView textView) {
 //        Float fTxtSizeSelectView = 25.00F;             // テキストサイズセット（選択サイズ）
@@ -107,14 +106,19 @@ public class MyFragment extends Fragment {
         boolean isEnd;      //
         int x;              //
         int y;              //
+        float fTxtSizeYM = 18.00F;      // テキストサイズセット（年月）
 
-        monthFlg = new int[6][7];                       // ここでは初期化を行う
+        monthFlg = new int[6][7];                       // ここで初期化を行う
 
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         // 年月表示
         TextView textView = (TextView)view.findViewById(R.id.txtYM);
         textView.setText(year + "年" + month + "月");
+
+        // テキストサイズを設定（dp）
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fTxtSizeYM);
+
         // 月の初めの曜日を求めます。
         calendar.set(year, month - 1, 1);       // 引数: 1月: 0, 2月: 1, ...
         startDay = calendar.get(Calendar.DAY_OF_WEEK);  // 曜日を取得
@@ -183,7 +187,7 @@ public class MyFragment extends Fragment {
     private void RefreshMonthView(View view, int year, int month) {
         String name;        //
         int resId;          //
-        float fTxtSizeNormalView = 20.00F;      // テキストサイズセット（通常サイズ）
+        float fTxtSizeNormalDayView = 20.00F;      // テキストサイズセット（通常サイズ）
 
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
@@ -192,7 +196,8 @@ public class MyFragment extends Fragment {
                 TextView textView1 = (TextView)view.findViewById(resId);
 
                 // 日付を設定
-                textView1.setText(String.valueOf(String.format("%d ", calendarMatrix[i][j])) + "\n" + "\n");
+//                textView1.setText(String.valueOf(String.format("%d ", calendarMatrix[i][j])) + "\n" + "\n");
+                textView1.setText(String.valueOf(String.format("%d ", calendarMatrix[i][j])));
 
                 // 日曜・土曜は専用のテキストカラーを設定
                 if (j == 0) {
@@ -202,7 +207,7 @@ public class MyFragment extends Fragment {
                 }
 
                 // テキストサイズを設定（dp）
-                textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fTxtSizeNormalView);
+                textView1.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fTxtSizeNormalDayView);
 
                 // テキストの表示位置を設定（右寄せ）
                 textView1.setGravity(Gravity.RIGHT);
